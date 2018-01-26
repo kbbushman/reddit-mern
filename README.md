@@ -25,7 +25,7 @@ Building a [Reddit](https://www.reddit.com/) clone using the popular MERN (Mongo
 2. Add the following API CRUD routes for `Posts`
     - `/api/posts` – GET, POST
     - `/api/posts/:post_id` – GET, PUT, DELETE
-3. Fill out the `Posts` controller using Mongoose queries
+3. Fill out the `Posts` controller using Mongoose queries – good review / reference [here](https://github.com/SF-WDI-LABS/tunely/blob/sprint-6/controllers/albumsController.js)
 4. Add to your `seed.js` file to create a `Post` – verify that it shows up at the appropriate endpoint
 5. Use POSTMAN to confirm that the other CRUD routes are working as well (PUT, DELETE)
 
