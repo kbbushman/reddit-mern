@@ -48,36 +48,30 @@ Building a [Reddit](https://www.reddit.com/) clone using the popular MERN (Mongo
 ## CREATING THE FRONT-END
 
 ### Setting up React
-1. Go to your React app's homepage – research how you can access your local Node server from your React app [here](https://www.fullstackreact.com/articles/using-create-react-app-with-a-server/#the-rub-)
-    - run `npm init` in the base of your `reddit-clone-mern/` directory
-    - run `npm install concurrently --save`
-    - change your `start` script in your new `package.json` directory to be `"start": "concurrently \"cd front-end && npm start\" \"cd back-end && npm start\""`
-    - In your `front-end/package.json`, add a line for your React app to proxy to your Node API: `"proxy": "http://localhost:8080/"`
-    - Close all running servers – go to the base of your `reddit-clone-mern/` directory and run `npm start`
-2. Pull in [react-router](https://github.com/ReactTraining/react-router) to implement the following routes
-    - `/` – Should show home dashboard where posts' titles and thumbnail images are displayed
-    - `/posts/:post_id` – Clicking on a post should redirect to its show page (all post content, attached comments, and form for adding comments)
-3. Put in some placeholder text at the above pages to confirm that your React routing is working
-4. Think about the containers you will need
+1. Go to your React app's homepage – poke around the `src/` directory to make sure you know why the UI is showing up as it is
+2. Pull in [react-router-dom](https://medium.com/@pshrmn/a-simple-react-router-v4-tutorial-7f23ff27adf) to implement the following routes – just put in some dummy text to confirm your React routes are working, before implementing full functionality:
+    - `/` routes to home page (`/pages/HomePage.js`). Displays all my posts' titles, their thumbnail images, and their votes count.
+    - `/posts/:post_id` routes to each `TextPost`'s show page (`/pages/SinglePostPage.js`). Displays that post's content, attached comments, and form for adding comments (implement comments & form later)
+3. Think about the containers you will need
     - What components will each container contain
     - What API requests will each container make
-5. Think about the HTTP request library you'd like to use to fetch data from your Node API endpointments (e.g. `$.ajax`, `fetch`, `axios`, etc.)
+4. Think about the HTTP request library you'd like to use to fetch data from your Node API endpointments (e.g. `$.ajax`, `fetch`, `axios`, etc.). I recommend `fetch` because it is available to you without installing any dependencies. It is also widely accepted as the AJAX library to use with React.
 
     
 ### Implementing User Stories
 1. User should see all posts on the home page, ranked in descending order by `votes`
-2. User should be able to click on a "Create Post" button and see a modal to create a new `Post`
+2. User should be able to click on a "Create Post" button and see a modal or navigate to a new page to create a new `Post`
 3. User should be able to vote on a post
 4. User should be able to create a `Comment` on a `Post`
 5. User should be able to vote on a `Comment`
-6. User should be able to comment on a comment (requires adding field to `Comment` model)
-
+6. User should be able to comment on a comment (requires changing the `Comment` model's schema)
 
 
 ## BONUS
 1. Create a `LinkPost` resource
     - Another kind of post a Reddit user can upload (simply links to an external link, e.g. news article or imgur page)
-    - Model should contain fields `title`, `link_url`, `thumbnail_image_url`, `votes`
+    - Model should contain fields `title`, `link_url`, `thumbnail_image_url`, `votes`,
+    - Can also leave `Comment`s on a `LinkPost`
 2. Create a `User` resource 
     - Model should contain fields `first_name`, `last_name`, `email`, and `password_hash`
     - Implement authentication
