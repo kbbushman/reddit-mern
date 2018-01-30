@@ -65,8 +65,11 @@ Fetch documentation [here](https://developer.mozilla.org/en-US/docs/Web/API/Fetc
 Fetch GET request:
 
 ```javascript
-fetch('http://localhost:8080/api/posts').then(res => {
-  console.log(res.json());
+fetch('http://localhost:8080/api/posts').then((res) => {
+  return res.json();
+}).then((json) => {
+  // do stuff with the JSON you get back here
+  console.log(json);
 });
 ```
 
@@ -86,9 +89,12 @@ fetch('http://localhost:8080/api/posts', {
     votes: 3,
     comments: []
   })
-}).then(function(response) {
-    return response.json()
-})
+}).then((res) => {
+    return res.json()
+}).then((json) => {
+    // do stuff with the JSON you get back here
+    console.log(json)
+});
 ```
     
 ### Implementing User Stories
