@@ -57,7 +57,10 @@ Building a [Reddit](https://www.reddit.com/) clone using the popular MERN (Mongo
     = `<SinglePostPage/>` will probably have all the details for a post in its state
 4. Think about what components each page will contain
     - What API requests will each page make
-5. Think about the HTTP request library you'd like to use to fetch data from your Node API endpointments (e.g. `$.ajax`, `fetch`, `axios`, etc.). I recommend `fetch` because it is available to you without installing any dependencies. It is also widely accepted as the AJAX library to use with React.
+5. Think about the HTTP request library you'd like to use to fetch data from your Node API endpointments (e.g. `$.ajax`, `fetch`, `axios`, etc.). I recommend `fetch` because it is available to you without installing any dependencies. It is also widely accepted as the go-to AJAX call library to use with React.
+
+
+Fetch documentation [here](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch); great reference material [here](https://medium.com/@yoniweisbrod/interacting-with-apis-using-react-native-fetch-9733f28566bb).
 
 Fetch GET request:
 
@@ -87,10 +90,9 @@ fetch('http://localhost:8080/api/posts', {
     return response.json()
 })
 ```
-Great reference material [here](https://medium.com/@yoniweisbrod/interacting-with-apis-using-react-native-fetch-9733f28566bb).
     
 ### Implementing User Stories
-1. User should see all posts on the home page, ranked in descending order by `votes`
+1. User should see all posts on the home page (BONUS: rank them in descending order by `votes`)
 2. User should be able to click on a "Create Post" button and see a modal or navigate to a new page to create a new `Post`
 3. User should be able to vote on a post
 4. User should be able to create a `Comment` on a `Post`
