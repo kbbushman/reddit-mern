@@ -52,10 +52,20 @@ Building a [Reddit](https://www.reddit.com/) clone using the popular MERN (Mongo
 2. Pull in [react-router-dom](https://medium.com/@pshrmn/a-simple-react-router-v4-tutorial-7f23ff27adf) to implement the following routes – just put in some dummy text to confirm your React routes are working, before implementing full functionality:
     - `/` routes to home page (`/pages/HomePage.js`). Displays all my posts' titles, their thumbnail images, and their votes count.
     - `/posts/:post_id` routes to each `TextPost`'s show page (`/pages/SinglePostPage.js`). Displays that post's content, attached comments, and form for adding comments (implement comments & form later)
-3. Think about the containers you will need
-    - What components will each container contain
-    - What API requests will each container make
-4. Think about the HTTP request library you'd like to use to fetch data from your Node API endpointments (e.g. `$.ajax`, `fetch`, `axios`, etc.). I recommend `fetch` because it is available to you without installing any dependencies. It is also widely accepted as the AJAX library to use with React.
+3. Think about what will live in the state for each page – each page is basically a container, like `<Twitter/>` and `TodosContainer`
+    - `<HomePage/>` will probably store all posts in its state, like we stored `this.state = { allTweets: [] }` in `<Twitter/>`, or `this.state = { allTodos: [] }` in `<TodosContainer/>`
+    = `<SinglePostPage/>` will probably have all the details for a post in its state
+4. Think about what components each page will contain
+    - What API requests will each page make
+5. Think about the HTTP request library you'd like to use to fetch data from your Node API endpointments (e.g. `$.ajax`, `fetch`, `axios`, etc.). I recommend `fetch` because it is available to you without installing any dependencies. It is also widely accepted as the AJAX library to use with React.
+
+Fetch GET request:
+
+```javascript
+fetch('http://localhost:8080/api/posts').then(res => {
+  console.log(res.json());
+});
+```
 
     
 ### Implementing User Stories
