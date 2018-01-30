@@ -83,9 +83,11 @@ fetch('http://localhost:8080/api/posts', {
     votes: 3,
     comments: []
   })
+}).then(function(response) {
+    return response.json()
 })
 ```
-
+Great reference material [here](https://medium.com/@yoniweisbrod/interacting-with-apis-using-react-native-fetch-9733f28566bb).
     
 ### Implementing User Stories
 1. User should see all posts on the home page, ranked in descending order by `votes`
