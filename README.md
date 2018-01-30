@@ -67,6 +67,25 @@ fetch('http://localhost:8080/api/posts').then(res => {
 });
 ```
 
+Fetch POST request:
+
+```javascript
+fetch('http://localhost:8080/api/posts', {  
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    title: 'my new post title',
+    content: 'my new post content',
+    thumbnail_image_url: 'some_url',
+    votes: 3,
+    comments: []
+  })
+})
+```
+
     
 ### Implementing User Stories
 1. User should see all posts on the home page, ranked in descending order by `votes`
