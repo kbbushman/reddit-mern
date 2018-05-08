@@ -66,16 +66,23 @@ class SinglePostPage extends Component {
 		}).then(res => {
 			return res.json();
 		}).then(json => {
-			this.setState({
-				post: { 
-					title: this.state.post.title,
-					content: this.state.post.content,
-					votes: this.state.post.votes,
-					thumbnail_image_url: this.state.post.thumbnail_image_url,
-					comments: this.state.post.comments.concat(json) 
-				},
-				newComment: ''
-			})
+			// this.setState({
+			// 	post: { 
+			// 		// title: this.state.post.title,
+			// 		// content: this.state.post.content,
+			// 		// votes: this.state.post.votes,
+			// 		// thumbnail_image_url: this.state.post.thumbnail_image_url,
+      //     // comments: this.state.post.comments.concat(json) 
+			// 	},
+			// 	newComment: ''
+      // })
+        this.setState({
+          post: { 
+            ...this.state.post,
+            comments: [...this.state.post.comments, json]
+          },
+          newComment: ''
+        })
 		})
   }
 
