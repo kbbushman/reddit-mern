@@ -1,5 +1,6 @@
 var models = require('../models');
 var Comment = models.Comment;
+// var CommentComments = models.commentComments;
 var TextPost = models.TextPost;
 
 function index(req, res) {

@@ -123,7 +123,6 @@ class HomePage extends Component {
         })
       : <h2>Loading ...</h2>;
 
-      console.log(posts)
     return (
       
       <div className="container">
