@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 
 app.use(redditRouter);
 
-let port = process.env.PORT || 3000;
+let port = process.env.PORT || 3001;
 
 app.listen(port, function() {
   console.log(`Listening on port ${ port }`);

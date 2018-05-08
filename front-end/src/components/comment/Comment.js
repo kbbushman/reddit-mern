@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import './Comment.css';
 
 class Comment extends Component {
   render() {
     return (
-      <p className="Comment">
-	      Comment content
-      </p>
+      <div className="small">
+        <ul className="list-group">
+          <li className="list-group-item">{this.props.comment.content}</li>
+        </ul>
+      </div>
     );
   }
 }

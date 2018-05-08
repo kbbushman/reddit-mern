@@ -5,9 +5,7 @@ class TextPost extends Component {
   render() {
     return (
       <div className="TextPost">
-        <p className="TextPost-content">
-          TextPost content
-        </p>
+        <h2 className="TextPost-content">Text Post</h2>
       </div>
     );
   }

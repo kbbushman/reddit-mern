@@ -11,7 +11,9 @@ router.put('/api/posts/:post_id', textPostsController.update);
 router.delete('/api/posts/:post_id', textPostsController.destroy);
 
 //Comment Routes
+router.get('/api/posts/:post_id/comments', commentsController.index);
 router.post('/api/posts/:post_id/comments', commentsController.create);
+router.get('/api/posts/:post_id/comments/:comment_id', commentsController.show);
 router.put('/api/posts/:post_id/comments/:comment_id', commentsController.update);
 router.delete('/api/posts/:post_id/comments/:comment_id', commentsController.destroy);
 

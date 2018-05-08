@@ -8,20 +8,33 @@ function index(req, res) {
   });
 }
 
-function create(req, res) {
-  
+function show(req, res) {
+  TextPost.findById(req.params.post_id, function(err, post) {
+    if (err) res.send(err);
+    else res.json(post);
+  });
 }
 
-function show(req, res) {
-
+function create(req, res) {
+  TextPost.create(req.body, function(err, post) {
+    if (err) res.send(err);
+    else res.json(post);
+  })
 }
 
 function update(req, res) {
-
+  TextPost.findByIdAndUpdate(req.params.post_id,
+  {$set: req.body}, function(err, post) {
+    if (err) res.send(err);
+    else res.json(post);
+  })
 }
 
 function destroy(req, res) {
-
+  TextPost.findByIdAndRemove(req.params.post_id, function(err, post) {
+    if (err) res.send(err);
+    else res.send('Success: Post Deleted')
+  })
 }
 
 module.exports.index = index;
