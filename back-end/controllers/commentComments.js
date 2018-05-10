@@ -15,28 +15,22 @@ function show(req, res) {
 function create(req, res) {
   Comment.create(req.body, function(err, commentComment) {
     if (err) res.send(err);
-
     else {
       Comment.findById(req.params.comment_id, function(err, comment) {
         if (err) res.send(err);
-        
         else {
           comment.comments.push(commentComment);
           comment.save();
           // res.json(comment);
-
           TextPost.findById(req.params.post_id, function(err, post) {
             if (err) res.send(err);
-
             // console.log(post.comments.id(req.params.comment_id))
-
             else {
               var commentToUpdate = post.comments.id(req.params.comment_id);
               commentToUpdate.comments.push(commentComment);
               post.save();
-              res.json(commentComment);
+              res.json(post);
             }
-            
           })
         }
       })
@@ -45,47 +39,21 @@ function create(req, res) {
 }
 
 function destroy(req, res) {
-  Comment.findById(req.params.commentComment_id, function(err, commentComment) {
-    if (err) res.send(err);
-    else {
-      // commentComment.remove();
+  Comment.findById(req.params.comment_id, function(err, comment) {
+    if (err) res.send(err)
+    commentReply = comment.comments.id(req.params.commentComment_id);
+    commentReply.remove();
+    comment.save();
 
-      TextPost.findById(req.params.comm_id, function(err, post) {
-        commentToUpdate = post.comments.id(req.params.comment_id)
-        console.log(commentToUpdate);
-      })
-    }
-    
+    TextPost.findById(req.params.post_id, function(err, post) {
+      if (err) res.send(err);
+      commentToUpdate = post.comments.id(req.params.comment_id);
+      commentToRemove = commentToUpdate.comments.id(req.params.commentComment_id)
+      commentToRemove.remove();
+      post.save();
+      res.send(post);
+    })
   })
-    
-    // else {
-    //   var commentCommentToRemove = comment.comments.id(req.params.commentComment_id);
-    //   if (commentCommentToRemove) {
-    //     commentCommentToRemove.remove();
-    //     comment.save()
-
-    //     TextPost.findById(req.params.post_id, function(err, post) {
-    //       if (err) res.send(err);
-    //       else {
-    //         var commentToRemove = post.comments.id(comment._id);
-    //         commentToRemove.remove();
-    //         post.comments.push(comment);
-    //       }
-    //     })
-    //   }
-    // }
-
-
-
-    // else {
-    //   // Remove comment from Post too!
-    //   TextPost.findByIdAndUpdate(req.params.post_id,
-    //   {$pull: {comments: {_id: req.params.comment_id}}}, function(err) {
-    //     if (err) res.send(err);
-    //     else res.send('Success: Comment Deleted')
-    //   })
-    // }
-
 }
 
 module.exports.show = show;
