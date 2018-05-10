@@ -111,7 +111,7 @@ class HomePage extends Component {
                     <p className="mb-0">Votes: {post.votes}</p>
                     <p>Comments: {post.comments.length}</p>
                   </div>
-                  <div className="">
+                  <div>
                     <button onClick={() => this.handleAddVote(post._id)} className="btn btn-sm btn-primary mr-2">Upvote</button>
                     <button onClick={() => this.handleRemoveVote(post._id)} className="btn btn-sm btn-secondary mr-2">Downvote</button>
                     <button className="btn btn-sm btn-danger" onClick={() => this.deletePost(post._id)}>Delete</button>

@@ -29,7 +29,7 @@ function create(req, res) {
         else {
           post.comments.push(comment);
           post.save();
-          res.json(comment);
+          res.json(post);
         }
       })
     }
@@ -37,21 +37,21 @@ function create(req, res) {
 }
 
 function update(req, res) {
-  Comment.findByIdAndUpdate(req.params.comment_id,
-    {$set: req.body}, function(err, updatedComment) {
-      if (err) res.send(err);
-      else {
+  // Comment.findByIdAndUpdate(req.params.comment_id,
+  //   {$set: req.body}, function(err, updatedComment) {
+  //     if (err) res.send(err);
+  //     else {
         TextPost.findById(req.params.post_id, function(err, post) {
           if (err) res.send(err);
           var commentToUpdate = post.comments.id(req.params.comment_id);
-          commentToUpdate.content = updatedComment.content;
-          commentToUpdate.votes = updatedComment.votes;
+          commentToUpdate.content = req.body.content;
+          commentToUpdate.votes = req.body.votes;
 
           post.save();
-          res.json(updatedComment);
+          res.json(commentToUpdate);
         })
-      }
-    })
+    //   }
+    // })
 }
 
 // UPDATE Version 2
